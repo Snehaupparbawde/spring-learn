@@ -1,12 +1,13 @@
 package org.dnyanyog;
 
 import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApplicationMain {
+public class EcommerceApiMain {
 	public static void main(String[] args) {
-		SpringApplication.run(ApplicationMain.class, args);
+		SpringApplication.run(EcommerceApiMain.class, args);
 	}
 
 }
