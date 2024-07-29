@@ -39,7 +39,7 @@ public class UpdateUserService {
 		usersTable.setLastName(request.getLastName());
 		usersTable.setLoginName(request.getUser());
 		usersTable.setPassword(request.getPassword());
-		usersTable.setUser_id(1);
+		usersTable.setUser_id(request.getUser_id());
 
 		usersDao.save(usersTable);
 		response.setResponseCode("0000");

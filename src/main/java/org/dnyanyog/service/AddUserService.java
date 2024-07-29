@@ -19,7 +19,6 @@ public class AddUserService {
 		usersTable.setLastName(request.getLastName());
 		usersTable.setLoginName(request.getUser());
 		usersTable.setPassword(request.getPassword());
-		usersTable.setUser_id(1);
 
 		Users dataInsertedByDaoIncludingGeneratedValue = usersDao.save(usersTable);
 

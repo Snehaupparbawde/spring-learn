@@ -13,9 +13,9 @@ public class AddUserController {
 	@Autowired
 	private AddUserService addUserService;
 
-	@PostMapping(path="/api/user/AddUser")
-	public AddUserResponse adduser(@RequestBody AddUserRequest request) {
-		return addUserService.addUser(request);
+	@PostMapping(path = "/api/user/AddUser")
+	public AddUserResponse adduser(@RequestBody AddUserRequest addUserBody) {
+		return addUserService.addUser(addUserBody);
 	}
 
 }

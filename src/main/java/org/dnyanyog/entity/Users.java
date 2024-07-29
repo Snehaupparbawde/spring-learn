@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 @Table
 @Entity
 public class Users {
-
+	@GeneratedValue
 	@Id
 	@Column
 	private Integer user_id; // Get/Set/Getter/Setter
@@ -24,6 +25,9 @@ public class Users {
 
 	@Column
 	private String loginName;
+
+	@Column
+	private String mobile;
 
 	@Column
 	private String password;
@@ -58,6 +62,14 @@ public class Users {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 	public String getPassword() {

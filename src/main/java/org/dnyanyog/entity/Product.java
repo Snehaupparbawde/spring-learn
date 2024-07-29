@@ -4,12 +4,14 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Component
 @Table
 @Entity
 public class Product {
+	@GeneratedValue
 	@Id
 	@Column
 	private Integer product_id;

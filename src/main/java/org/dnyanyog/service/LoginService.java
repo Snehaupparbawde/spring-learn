@@ -1,5 +1,7 @@
 package org.dnyanyog.service;
 
+import static org.dnyanyog.common.JavaUtil.isNotNull;
+
 import org.dnyanyog.dao.UsersDao;
 import org.dnyanyog.dto.LoginRequest;
 import org.dnyanyog.dto.LoginResponse;
@@ -16,21 +18,33 @@ public class LoginService {
 	public LoginResponse login(LoginRequest loginBody) {
 		LoginResponse response = new LoginResponse();
 
-		// Users user = userDao.findById(1).get();
-		Users user = userDao.findByLoginName(loginBody.user);
-		if (user.getLoginName().equals(loginBody.user) && user.getPassword().equals(loginBody.password)) {
+		Users userReceivedFromDb = userDao.findByLoginName(loginBody.user);
+		if (isNotNull(userReceivedFromDb)) {
 
-			response.errorCode = "0000";
-			response.message = "Login Success";
-			response.firstName = user.getFirstName();
-			response.lastName = user.getLastName();
-			response.loginName = user.getLoginName();
+			if (userReceivedFromDb.getLoginName().equals(loginBody.user)
+					&& userReceivedFromDb.getPassword().equals(loginBody.password)) {
+				response.responseCode = "0000";
+				response.message = "Login Success";
+				response.firstName = userReceivedFromDb.getFirstName();
+				response.lastName = userReceivedFromDb.getLastName();
+				response.loginName = userReceivedFromDb.getLoginName();
+				response.password = userReceivedFromDb.getPassword();
 
+				return response;
+
+			} else {
+				response.responseCode = "911";
+				response.message = "Login Failed!!";
+				
+			}
+			return response;
+
+		}
+
+		else {
+			response.responseCode = "911";
+			response.message = "User Not Found!!";
 			return response;
 		}
-		response.errorCode = "911";
-		response.message = "Login Failed";
-
-		return response;
 	}
 }
